@@ -1,0 +1,104 @@
+DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Beni Seviyor musun?</title>
+
+<style>
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  font-family: Arial;
+}
+
+h1 {
+  margin-top: 80px;
+  font-size: 40px;
+  color: #fff;
+}
+
+button {
+  font-size: 22px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+}
+
+#evet {
+  background: #ff4d6d;
+  color: white;
+  left: 40%;
+  top: 55%;
+}
+
+#hayir {
+  background: #555;
+  color: white;
+  left: 55%;
+  top: 55%;
+}
+
+/* Kalpler */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 30px;
+  animation: fly 4s linear forwards;
+}
+
+@keyframes fly {
+  to {
+    transform: translateY(-800px);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 Beni Seviyor musun? 💖</h1>
+
+<button id="evet" onclick="seviyorum()">Seviyorum 💕</button>
+<button id="hayir" onmouseover="kac()">Hayır 🙃</button>
+
+<audio id="muzik">
+  <source src="bizimsarki.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function kac() {
+  const btn = document.getElementById("hayir");
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+function seviyorum() {
+  document.getElementById("muzik").play();
+  kalpUcur();
+  alert("Ben de seni çok seviyorum 🥰");
+}
+
+function kalpUcur() {
+  setInterval(() => {
+    const kalp = document.createElement("div");
+    kalp.className = "heart";
+    kalp.innerHTML = "💖";
+    kalp.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(kalp);
+
+    setTimeout(() => {
+      kalp.remove();
+    }, 4000);
+  }, 300);
+}
+</script>
+
+</body>
+</html>
